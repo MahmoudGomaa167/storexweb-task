@@ -1,0 +1,51 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="large" color="#fff" type="ball-clip-rotate" [fullScreen]="true"></ngx-spinner>
+
+<app-navbar></app-navbar>
+
+<section class="add-movie mt-5 py-5">
+    <div class="container">
+        <h1 class="text-white text-center mb-4">Add a Movie</h1>
+
+        <form [formGroup]="movieForm" (ngSubmit)="setFormData(movieForm)">
+            <div class="mb-3">
+              <label for="name" class="form-label text-white">Movie Name</label>
+              <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="email" required>
+            </div>
+
+            <div *ngIf="movieForm.get('name')?.errors != null && movieForm.get('name')?.touched"
+                class="alert alert-danger">
+                <p class="mb-0" *ngIf="movieForm.get('name')?.errors?.['required']">Movie Name is required</p>
+            </div>
+
+            <div class="mb-3">
+              <label for="desc" class="form-label text-white">Description</label>
+              <input formControlName="description" type="text" class="form-control" id="desc">
+            </div>
+
+            <div *ngIf="movieForm.get('description')?.errors != null && movieForm.get('description')?.touched"
+              class="alert alert-danger">
+              <p class="mb-0" *ngIf="movieForm.get('description')?.errors?.['required']">Movie Description is required</p>
+            </div>
+
+            <div class="mb-3">
+              <label for="image" class="form-label text-white">Image</label>
+              <input (change)="onFileChange($event)" type="file" accept="image/png,image/jpg,image/jpeg" class="form-control" id="image" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label text-white">Category</label>
+              <select class="form-select" aria-label="Category Select" formControlName="category_id">
+                <option *ngFor="let category of categories" [value]="category?.id">{{category?.name}}</option>
+              </select>
+            </div>
+
+            <div *ngIf="movieForm.get('category_id')?.errors != null && movieForm.get('category_id')?.touched"
+              class="alert alert-danger">
+              <p class="mb-0" *ngIf="movieForm.get('category_id')?.errors?.['required']">Movie Category is required</p>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Add Movie</button>
+          </form>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+@import '../../styles.scss';
+
+.home{
+    min-height: 100vh;
+    background-color: $navy;
+
+    .select{
+        h6{
+            white-space: nowrap;
+        }
+    }
+
+    .movie{
+        cursor: pointer;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="large" color="#fff" type="ball-clip-rotate" [fullScreen]="true"></ngx-spinner>
+
+<app-navbar></app-navbar>
+
+<section class="movie-details mt-5 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="movie-image">
+                    <img src="https://test-api.storexweb.com/{{movie?.image}}" alt="{{movie?.name}}">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="movie-info mt-5">
+                    <h2 class="text-white text-capitalize">{{movie?.name}}</h2>
+                    <p class="text-white">{{movie?.description}}</p>
+                    <h5 class="text-white mb-5">Category: {{movie?.category.name}}</h5>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <button class="btn btn-success" (click)="handleEdit(movie?.id)">Edit Movie</button>
+                        <button class="btn btn-danger" (click)="setFormData()">Delete Movie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

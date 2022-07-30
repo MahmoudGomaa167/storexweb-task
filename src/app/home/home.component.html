@@ -1,0 +1,28 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="large" color="#fff" type="ball-clip-rotate" [fullScreen]="true"></ngx-spinner>
+<app-navbar></app-navbar>
+
+<section class="home mt-5 py-5">
+    <div class="container">
+        <div class="select mb-5 d-flex align-items-center gap-4">
+            <h6 class="text-white">Filter By Catrgory</h6>
+           <form class="w-100" [formGroup]="selectForm">
+             <select formControlName="categoryId" class="form-select" (change)="filterMovieByCategory(selectForm)">
+                 <option *ngFor="let category of categories" [value]="category?.id">{{category?.name}}</option>
+             </select>
+           </form>
+        </div>
+
+        <div class="alert-danger" *ngIf="movies.length === 0">
+            <p class="text-center alert fw-bolder">No Movies Found</p>
+        </div>
+
+        <div class="row" *ngIf="movies.length > 0">
+            <div class="col-md-3" *ngFor="let movie of movies">
+                <div class="movie mb-3" (click)="handleNavigate(movie?.id)">
+                    <img src="https://test-api.storexweb.com/{{movie?.image}}" class="img-fluid" alt="{{movie?.name}}">
+                    <h4 class="text-white text-capitalize text-center">{{movie?.name}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

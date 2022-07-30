@@ -1,0 +1,37 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="large" color="#fff" type="ball-clip-rotate" [fullScreen]="true"></ngx-spinner>
+
+<app-navbar></app-navbar>
+
+<section class="login">
+    <div class="container">
+
+        <h1 class="text-white text-center mb-5">Login</h1>
+
+        <div class="overlay"></div>
+
+        <form [formGroup] = "loginForm" (ngSubmit)="loginSubmit(loginForm)">
+            <div class="mb-3">
+              <label for="email" class="form-label text-white">Email Address</label>
+              <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="email">
+            </div>
+
+            <div *ngIf="loginForm.get('email')?.errors != null && loginForm.get('email')?.touched"
+                        class="alert alert-danger">
+                        <p class="mb-0" *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</p>
+                        <p class="mb-0" *ngIf="loginForm.get('email')?.errors?.['email']">Email is not vaild</p>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label text-white">Password</label>
+              <input formControlName="password" type="password" class="form-control" id="password">
+            </div>
+
+            <div *ngIf="loginForm.get('password')?.errors != null && loginForm.get('password')?.touched"
+                        class="alert alert-danger">
+                        <p class="mb-0" *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</p>
+            </div>
+
+            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Submit</button>
+          </form>
+    </div>
+</section>

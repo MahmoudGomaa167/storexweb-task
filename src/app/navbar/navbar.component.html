@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/home']">My Movies</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="logout">
+            <a class="nav-link" [routerLink]="['/home']">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="logout">
+            <a class="nav-link" [routerLink]="['/addMovie']">Add a Movie</a>
+          </li>
+          <li class="nav-item" *ngIf="logout" (click) = "submitLogout()">
+            <a class="nav-link">Logout</a>
+          </li>
+          <li class="nav-item" *ngIf="login">
+            <a class="nav-link" [routerLink]="['/login']">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="login">
+            <a class="nav-link" [routerLink]="['/register']">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
